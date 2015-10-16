@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vnChat 1.0</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+		<div class="header">
+			<h1>vnChat 1.0</h1>
+		</div>
+		<div class="chatbox col-md-8 col-md-offset-2">
+			<div class="chatLog col-md-12">
+				<ul class="chats"></ul>
+			</div>
+			<div class="row">
+				<form action="">
+					<div class="col-md-7 ">
+					<input class="input-md form-control" type="text" name="" id="chat" autocomplete="off">
+					</div>
+					<div class="col-md-1 col-md-offset-3">
+						<button class="send btn btn-md bg-success">Send</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  
+  <!--scripts goes here-->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
