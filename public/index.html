@@ -31,6 +31,20 @@
   <!--scripts goes here-->
   <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-  <script src="script.js"></script>
+  <script>
+	  var socket = io();
+      
+		$('.send').click(function(){
+			var message = $('#chat').val();
+			socket.emit('message', message);
+			$('#m').val('');
+			return false;
+		});
+		socket.on('messagefromserver', function(msg){
+			if (msg)
+					$('.chats').append($('<li>').text(msg));
+					$('#chat').val('');
+		});
+  </script>
 </body>
 </html>
