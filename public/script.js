@@ -33,6 +33,6 @@ socket.on('userdisconnects', function(data){
 	$('.chats').append($('<li>').text(data));
 });
 
-socket.on('usersonline', function(data){
-	$('.chats').append($('<li>').text(data.socket.id));
-});
+// socket.on('usersonline', function(data){
+// 	$('.chats').append($('<li>').text(data.socket.id));
+// });
