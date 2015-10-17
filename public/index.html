@@ -7,30 +7,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-	  <form action="">
-			<div class="header">
-				<h1>vnChat 1.0</h1>
-			</div>
-			<div class="chatbox col-md-8 col-md-offset-2">
-				<div class="chatLog col-md-12">
-					<ul class="chats"></ul>
-				</div>
-				<div class="row">
-					<div class="col-md-7 ">
-						<input class="input-md form-control" type="text" name="" id="chat" autocomplete="off">
-					</div>
-					<div class="col-md-1 col-md-offset-3">
-						<button class="send btn btn-md bg-success">Send</button>
-					</div>
-				</div>
-			</div>
-		</form>
+ 	<div class="container">
+		<div class="header col-md-12">
+			<h1>vnChat 1.0</h1>
+		</div>
+		<div class="chatbox col-md-12">
+			<div class="chatLog col-md-12">
+				<ul class="chats"></ul>
+        </div>
+        <form role="form">
+            <input type="text" name="" id="chat" autocomplete="off">
+            <button class="send ">Send</button>
+        </form>
+		</div>
 	</div>
-  
-  <!--scripts goes here-->
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="jquery.min.js"></script>
-  <script src="script.js"></script>
+
+<!--scripts goes here-->
+<script src="/socket.io/socket.io.js"></script>
+<script src="jquery.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

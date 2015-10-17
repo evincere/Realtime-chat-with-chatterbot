@@ -10,19 +10,23 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
-var user;
+var users = {};
 io.on('connection', function(socket){
   socket.on('userconnected', function(name){
+    users[socket.id] = name;
+    io.emit('usersonline', users); 
+    console.log(users);    
     io.emit('userconnects', name+' joined the chatroom.');
-    user = name;
   });
   socket.on('disconnect', function(){
-    io.emit('userdisconnects', user+' left the chatroom.');
-  });
+    io.emit('userdisconnects', users[socket.id]+' left the chatroom.');
+    delete users[socket.id];
+   });  
   
   socket.on('message', function(data){
     console.log('message: '+data.msg);
     io.emit('messagefromserver', data);
+    console.log(users);
   });
   
   socket.on('useristyping', function(user){
@@ -30,7 +34,6 @@ io.on('connection', function(socket){
   });
   
 });
-
 
 var port = Number(process.env.PORT || 3000);
 http.listen(port, function(){

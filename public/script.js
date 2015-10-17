@@ -8,7 +8,7 @@ $('form').submit(function(){
 	var message = $('#chat').val();
 	socket.emit('message', {msg: message, name: name});
 	$('#chat').val('');
-	$('.chatLog').scrollTop(99999);
+	$('.chatLog').scrollTop($('li:last').height);
 	return false;
 });
 
@@ -31,4 +31,8 @@ socket.on('userconnects', function(data){
 });
 socket.on('userdisconnects', function(data){
 	$('.chats').append($('<li>').text(data));
+});
+
+socket.on('usersonline', function(data){
+	$('.chats').append($('<li>').text(data.socket.id));
 });

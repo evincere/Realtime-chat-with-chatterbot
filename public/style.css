@@ -2,11 +2,11 @@
 	margin: 0;
 	padding: 0;
 }
-body{ background-color: #dee3e5; }
+body { background-color: #dee3e5; }
 .send{
-	width: 96.5px;
+    position: relative;
+    min-width: 10.5%;
 	border-radius: 0;
-	margin-top: 13px;
 	color: white;
 	border: 1px solid white;
 	background: linear-gradient(to right, #34495e 50%, #dee3e5 50%);
@@ -14,29 +14,39 @@ body{ background-color: #dee3e5; }
 	background-position:left bottom;
  	transition: all 0.2s ease;	
 	background-color: #34495e;
+    margin-top: 17px;
+	margin-right: 0;
+    padding: 6px;
+	float: right;
 }
-.send:hover{
+.send:hover {
 	background-position:bottom right;
     color: black;
 }
-#chat{
-	width: 620px;
+#chat {
+    position: relative;
+    min-width: 89%;
 	border-radius: 0;
-	margin-top: 13px;
+	border: 1px solid #CCC;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    margin-top: 17px;
+	padding: 6px;
+	float: left;
 }
-.header{
-	display: block;
-	margin: 0 auto;
-	width: 68%;
-	height: 70px;
-	background-color: #336E7B;
+.header {
+	position: relative;
+    left: -10px;
+	height: 15vh;
+    width: 102%;
+	background-color: #34495e;
+	box-shadow: 0px 10px 13px -2px rgba(0,0,0,0.75);
+	z-index: 99;
 }
 .header h1 {
 	position: relative;
-	font-size: 56px;
 	color: white;
-	animation: font 1500ms ease-out;
-	margin-left: 10px;
+	animation: font 1500ms ease-out forwards;
 }
 @keyframes font {
 	0% {
@@ -58,27 +68,31 @@ body{ background-color: #dee3e5; }
 		font-size: 45px;
 	}
 	100% {
-		font-size: 56px;
+		font-size: 47px;
 	}
 }
-.chatbox{
+.chatbox {
 	height: 480px;	
+    height: 85vh;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #2c3e50;
+	background-color: #373737;
 }
-.chatLog{
+.chatLog {
 	width: 100%;
-	height: 420px;
-    background-color: #bdc3c7;
+	height: 75vh;
+    background-color: #373737;
+	border: 1px solid white;
+	border-top: none;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .chats li {
-	width: 100%;
+	width: 105%;
 	font-size: 18px;
-	background-color: #DADFE1;
+	background-color: #3A3A3A;
+	color: #A7A7A7;
 	list-style-type: none;
+	margin-left: -15px;
 	padding: 10px;
 }
-.chats li:nth-child(even) {
-	background-color: #D2D7D3;
-}
+.chats li:nth-child(even) { background-color: #353535; }
