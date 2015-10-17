@@ -81,5 +81,4 @@ body{ background-color: #dee3e5; }
 }
 .chats li:nth-child(even) {
 	background-color: #D2D7D3;
-	text-align: right;
 }

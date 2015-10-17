@@ -10,19 +10,29 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
+var user;
 io.on('connection', function(socket){
-  console.log('a user connected');
+  socket.on('userconnected', function(name){
+    io.emit('userconnects', name+' joined the chatroom.');
+    user = name;
+  });
   socket.on('disconnect', function(){
-    console.log('a user disconnected');
+    io.emit('userdisconnects', user+' left the chatroom.');
   });
-  socket.on('message', function(msg){
-    console.log('message: '+msg);
-    io.emit('messagefromserver', msg);
+  
+  socket.on('message', function(data){
+    console.log('message: '+data.msg);
+    io.emit('messagefromserver', data);
   });
+  
+  socket.on('useristyping', function(user){
+    io.emit('useristyping', user+' is typing...');
+  });
+  
 });
 
-var port =Number(process.env.PORT || 3000);
 
+var port = Number(process.env.PORT || 3000);
 http.listen(port, function(){
   console.log('listening on *:'+port);
 });
