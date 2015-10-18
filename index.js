@@ -12,15 +12,16 @@ app.get('/', function(req, res){
 
 var users = {};
 io.on('connection', function(socket){
+  
   socket.on('userconnected', function(name){
     users[socket.id] = name;
-    io.emit('usersonline', users); 
-    console.log(users);    
-    io.emit('userconnects', name+' joined the chatroom.');
+    io.emit('usersonline', users);
+    socket.broadcast.emit('userconnects', name+' joined the chatroom.');
   });
   socket.on('disconnect', function(){
     io.emit('userdisconnects', users[socket.id]+' left the chatroom.');
     delete users[socket.id];
+    io.emit('usersonline', users);
    });  
   
   socket.on('message', function(data){
