@@ -25,7 +25,6 @@ socket.on('messagefromserver', function(data){
 	if (data.msg)
 		$('.chats').append($('<li>').text(data.name+': '+data.msg));
 		$('.chatLog').scrollTop($('.chats').outerHeight());
-		$('#chat').val('');
 });
 
 $('#chat').keyup(function(){
