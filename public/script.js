@@ -3,12 +3,12 @@ var name = prompt('name pls');
 while (!name)
 	name = prompt('name pls, wag makulit');
 	
-socket.emit('userconnected', name);
-socket.on('userconnects', function(data){
+socket.emit('userConnected', name);
+socket.on('userConnects', function(data){
 	$('.chats').append($('<li>').text(data));
 	$('.chatLog').scrollTop($('.chats').outerHeight());
 });
-socket.on('userdisconnects', function(data){
+socket.on('userDisconnects', function(data){
 	$('.chats').append($('<li>').text(data));
 	$('.chatLog').scrollTop($('.chats').outerHeight());
 });
@@ -21,9 +21,15 @@ $('form').submit(function(){
 	return false;
 });
 
-socket.on('messagefromserver', function(data){
+socket.on('messageFromServer', function(data){
 	if (data.msg)
 		$('.chats').append($('<li>').text(data.name+': '+data.msg));
+		$('.chatLog').scrollTop($('.chats').outerHeight());
+});
+
+socket.on('botResponse', function(bot){
+	if (bot.response)
+		$('.chats').append($('<li>').text('vbot: '+bot.response));
 		$('.chatLog').scrollTop($('.chats').outerHeight());
 });
 
@@ -36,7 +42,7 @@ $('#chat').keyup(function(){
 	
 // });
 
-socket.on('usersonline', function(user){
+socket.on('usersOnline', function(user){
 	$('.users li').remove();
 	for(var userId in user) {
 		$('.users').append($('<li>').text(user[userId]));
