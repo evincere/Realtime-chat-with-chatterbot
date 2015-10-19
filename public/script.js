@@ -1,9 +1,12 @@
 var socket = io();
-var name = prompt('name pls');
-while (!name)
-	name = prompt('name pls, wag makulit');
+var name;
 		
-socket.emit('userConnected', name);
+$('.name form').submit(function(){
+	name = $('#name').val();
+	$('.name').css('display', 'none');
+	socket.emit('userConnected', name);
+});	
+		
 socket.on('userConnects', function(data){
 	$('.chats').append($('<li>').text(data));
 	$('.chatLog').scrollTop($('.chats').outerHeight());

@@ -19,11 +19,12 @@ io.on('connection', function(socket){
     users[socket.id] = name;
     io.emit('usersOnline', users);
     socket.broadcast.emit('userConnects', name+' joined the chatroom.');
+    console.log(users);
   });
   socket.on('disconnect', function(){
     io.emit('userDisconnects', users[socket.id]+' left the chatroom.');
     delete users[socket.id];
-    io.emit('usersOnline', users);
+    io.emit('usersOnline', users);  
    });  
 
 //Broadcast the message sent by the client to all sockets  
