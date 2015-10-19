@@ -18,11 +18,13 @@ io.on('connection', function(socket){
   socket.on('userConnected', function(name){
     users[socket.id] = name;
     io.emit('usersOnline', users);
-    socket.broadcast.emit('userConnects', name+' joined the chatroom.');
+    socket.broadcast.emit('userConnects', name+' joined the chat room.');
     console.log(users);
   });
   socket.on('disconnect', function(){
-    io.emit('userDisconnects', users[socket.id]+' left the chatroom.');
+    console.log('eh'+users[socket.id]);
+    if (users[socket.id] != undefined) 
+        io.emit('userDisconnects', users[socket.id]+' left the chat room.');
     delete users[socket.id];
     io.emit('usersOnline', users);  
    });  
