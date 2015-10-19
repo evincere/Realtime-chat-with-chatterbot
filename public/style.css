@@ -111,6 +111,12 @@ body { background-color: #dee3e5; }
 	padding: 10px;
 }
 .chats li:nth-child(even) { background-color: #353535; }
+.vbot-container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 15px;
+}
 .online {
 	position: relative;
 	width: 25%;

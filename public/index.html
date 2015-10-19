@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>vnChat 1.0</title>
   <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-switch.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,6 +12,9 @@
 		<div class="header col-md-12">
 			<h1>vnChat 1.0</h1>
 			<em>powered by NodeJS and Socket.IO</em>
+			<div class="vbot-container">
+				<input class="vbot" type="checkbox" data-label-text="vBot" data-on-color="info" data-off-color="danger" data-indeterminate="false">
+			</div>
 		</div>
 		<div class="chatbox col-md-12">
 		<div class="chatLog col-md-12">
@@ -32,6 +36,7 @@
 <!--scripts goes here-->
 <script src="/socket.io/socket.io.js"></script>
 <script src="jquery.min.js"></script>
+<script src="bootstrap-switch.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

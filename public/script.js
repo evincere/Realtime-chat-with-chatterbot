@@ -2,7 +2,7 @@ var socket = io();
 var name = prompt('name pls');
 while (!name)
 	name = prompt('name pls, wag makulit');
-	
+		
 socket.emit('userConnected', name);
 socket.on('userConnects', function(data){
 	$('.chats').append($('<li>').text(data));
@@ -27,16 +27,28 @@ socket.on('messageFromServer', function(data){
 		$('.chatLog').scrollTop($('.chats').outerHeight());
 });
 
-socket.on('botResponse', function(bot){
-	if (bot.response)
-		$('.chats').append($('<li>').text('vbot: '+bot.response));
+var botState;
+console.log(botState);
+$('.vbot').bootstrapSwitch();
+$('.vbot').on('switchChange.bootstrapSwitch', function(event, state){
+	socket.emit('botState', state);
+	console.log('vBot: '+state);
+});
+socket.on('updateButton', function(buttonState){
+	$('.vbot').bootstrapSwitch('state', buttonState);
+});
+socket.on('botResponse', function(data){
+	console.log(data);
+	console.log('vBot: '+data.botState);
+	if (data.botState == true)
+		$('.chats').append($('<li>').text('vBot: '+data.botResponse.response));
 		$('.chatLog').scrollTop($('.chats').outerHeight());
 });
 
-$('#chat').keyup(function(){
+$('#chat').keyup(function(){		
 	if ($('#chat').val()) 
 		$('.send').addClass('hover');
-		socket.emit('useristyping', name);
+		socket.emit('userIsTyping', name);
 });
 // socket.on('useristyping', function(data){
 	
