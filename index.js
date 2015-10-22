@@ -34,7 +34,7 @@ io.on('connection', function(socket){
     io.emit('messageFromServer', data);
     console.log(data);
 
-//Simsimi bot api   
+//Simsimi chatterbot api   
     if (botState) {
       var url = 'http://sandbox.api.simsimi.com/request.p?key=e3a3a013-bd49-48af-9feb-ae79913375bf&lc=ph&text='+data.msg;
       request(url, function(error, response, body){
@@ -43,14 +43,14 @@ io.on('connection', function(socket){
       });
     }
   });
-//Checks if bot is enabled or not 
+//Checks if chatterbot is enabled/disabled
    var botState;  
    socket.on('botState', function(state){
       io.emit('updateButton', state)
       botState = state;
    });  
   
-  //User is typing functionality  
+//User is typing functionality  
   socket.on('userIsTyping', function(user){
     io.emit('useristyping', user+' is typing...');
   });
